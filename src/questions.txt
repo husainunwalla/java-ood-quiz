@@ -1,0 +1,1 @@
+MultipleChoice|What is the capital of France?|London|Paris|Berlin|Madrid|1
