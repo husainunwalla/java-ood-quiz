@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="inital commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/questions.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quizgame/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quizgame/models/questions/MultipleChoiceQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quizgame/models/questions/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/questions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +33,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/husainunwalla/Documents/GitHub/Quiz Game/src/quizgame/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/husainunwalla/Documents/GitHub/Quiz Game/src/quizgame/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/quizgame/models" />
@@ -96,6 +91,7 @@
       <updated>1678131336740</updated>
       <workItem from="1678131337641" duration="350000" />
       <workItem from="1678166644211" duration="4477000" />
+      <workItem from="1678212372283" duration="4739000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1678131358983</created>
@@ -104,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678131358983</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="inital commit">
+      <created>1678212410248</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678212410248</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
