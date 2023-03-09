@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="Score board and other changes">
-      <change afterPath="$PROJECT_DIR$/src/quizgame/models/questions/FillInTheBlankQuestion.java" afterDir="false" />
+    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="feat: added FIB questions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/models/questions/MultipleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/questions/MultipleChoiceQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/models/questions/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/questions/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

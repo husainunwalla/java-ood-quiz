@@ -1,6 +1,7 @@
 package quizgame.ui;
 
 import quizgame.models.QuestionSet;
+import quizgame.models.questions.FillInTheBlankQuestion;
 import quizgame.models.questions.MultipleChoiceQuestion;
 import quizgame.models.questions.Question;
 
@@ -20,6 +21,7 @@ public class QuizUI extends JFrame implements ActionListener {
     private int selectedAnswerIndex;
     private int score;
     private JLabel scoreLabel;
+    private JTextField answerField;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -45,6 +47,9 @@ public class QuizUI extends JFrame implements ActionListener {
         answerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         contentPane.add(answerPanel, BorderLayout.CENTER);
 
+        answerField = new JTextField(20);
+        answerPanel.add(answerField);
+
         for (int i = 0; i < 4; i++) {
             JRadioButton button = new JRadioButton();
             answerButtons.add(button);
@@ -66,15 +71,9 @@ public class QuizUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextButton) {
+            clearSelection();
             Question question = questionSet.getQuestions().get(currentQuestionIndex);
-            if (question instanceof MultipleChoiceQuestion) {
-                MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
-                int correctIndex = mcq.getCorrectAnswerIndex();
-                System.out.println(correctIndex);
-                if (selectedAnswerIndex == correctIndex) {
-                    score++;
-                }
-            }
+            checkAnswer(question);
             scoreLabel.setText("Score: " + score);
             if (currentQuestionIndex < questionSet.getQuestions().size() - 1) {
                 currentQuestionIndex++;
@@ -92,6 +91,7 @@ public class QuizUI extends JFrame implements ActionListener {
         Question question = questionSet.getQuestions().get(index);
         questionLabel.setText(question.getQuestionText());
         if (question instanceof MultipleChoiceQuestion) {
+            answerField.setVisible(false);
             List<String> answerChoices = ((MultipleChoiceQuestion) question).getAnswerChoices();
             ButtonGroup buttonGroup = new ButtonGroup();
             for (int i = 0; i < answerButtons.size(); i++) {
@@ -107,6 +107,13 @@ public class QuizUI extends JFrame implements ActionListener {
             MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
             int correctIndex = mcq.getCorrectAnswerIndex();
             answerButtons.get(correctIndex).setActionCommand("correct");
+        }else if (question instanceof FillInTheBlankQuestion) {
+            answerField.setVisible(true);
+            FillInTheBlankQuestion fitb = (FillInTheBlankQuestion) question;
+            //Disable Multiple choice buttons
+            for (JRadioButton button : answerButtons) {
+                button.setVisible(false);
+            }
         }
         clearSelection();
     }
@@ -115,6 +122,17 @@ public class QuizUI extends JFrame implements ActionListener {
     private void clearSelection() {
         for (JRadioButton button : answerButtons) {
             button.setSelected(false);
+        }
+    }
+
+    private void checkAnswer(Question question){
+        if (question instanceof MultipleChoiceQuestion) {
+            MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
+            int correctIndex = mcq.getCorrectAnswerIndex();
+            if (selectedAnswerIndex == correctIndex) score++;
+        } else if (question instanceof FillInTheBlankQuestion) {
+            FillInTheBlankQuestion fib = (FillInTheBlankQuestion) question;
+            if (fib.checkAnswer(answerField.getText())) score ++;
         }
     }
 }
