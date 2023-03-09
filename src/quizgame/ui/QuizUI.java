@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizUI extends JFrame implements ActionListener {
-    private QuestionSet questionSet;
-    private List<JRadioButton> answerButtons;
-    private JLabel questionLabel;
-    private JButton nextButton;
+    private final QuestionSet questionSet;
+    private final List<JRadioButton> answerButtons;
+    private final JLabel questionLabel;
+    private final JButton nextButton;
     private int currentQuestionIndex;
     private int selectedAnswerIndex;
     private int score;
-    private JLabel scoreLabel;
-    private JTextField answerField;
+    private final JLabel scoreLabel;
+    private final JTextField answerField;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -90,7 +90,7 @@ public class QuizUI extends JFrame implements ActionListener {
     private void loadQuestion(int index) {
         Question question = questionSet.getQuestions().get(index);
         questionLabel.setText(question.getQuestionText());
-        if (question instanceof MultipleChoiceQuestion) {
+        if (question instanceof MultipleChoiceQuestion mcq) {
             answerField.setVisible(false);
             List<String> answerChoices = ((MultipleChoiceQuestion) question).getAnswerChoices();
             ButtonGroup buttonGroup = new ButtonGroup();
@@ -104,12 +104,10 @@ public class QuizUI extends JFrame implements ActionListener {
                     button.setVisible(false);
                 }
             }
-            MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
             int correctIndex = mcq.getCorrectAnswerIndex();
             answerButtons.get(correctIndex).setActionCommand("correct");
         }else if (question instanceof FillInTheBlankQuestion) {
             answerField.setVisible(true);
-            FillInTheBlankQuestion fitb = (FillInTheBlankQuestion) question;
             //Disable Multiple choice buttons
             for (JRadioButton button : answerButtons) {
                 button.setVisible(false);
@@ -126,12 +124,10 @@ public class QuizUI extends JFrame implements ActionListener {
     }
 
     private void checkAnswer(Question question){
-        if (question instanceof MultipleChoiceQuestion) {
-            MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
+        if (question instanceof MultipleChoiceQuestion mcq) {
             int correctIndex = mcq.getCorrectAnswerIndex();
             if (selectedAnswerIndex == correctIndex) score++;
-        } else if (question instanceof FillInTheBlankQuestion) {
-            FillInTheBlankQuestion fib = (FillInTheBlankQuestion) question;
+        } else if (question instanceof FillInTheBlankQuestion fib) {
             if (fib.checkAnswer(answerField.getText())) score ++;
         }
     }

@@ -6,10 +6,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuestionSet {
-    private List<Question> questions;
+    private final List<Question> questions;
 
     public QuestionSet() {
         questions = new ArrayList<>();
@@ -30,23 +31,19 @@ public class QuestionSet {
                 String[] parts = line.split("\\|");
                 String questionType = parts[0];
                 String questionText = parts[1];
-                List<String> answerChoices = new ArrayList<>();
-                for (int i = 2; i < parts.length - 1; i++) {
-                    answerChoices.add(parts[i]);
-                }
+                List<String> answerChoices = new ArrayList<>(Arrays.asList(parts).subList(2, parts.length - 1));
                 String correctAnswer = parts[parts.length - 1];
                 switch (questionType) {
-                    case "MultipleChoice":
+                    case "MultipleChoice" -> {
                         int correctIndex = Integer.parseInt(correctAnswer);
                         MultipleChoiceQuestion mcq = new MultipleChoiceQuestion(questionText, answerChoices, correctIndex);
                         addQuestion(mcq);
-                        break;
-                    case "FillInTheBlanks":
+                    }
+                    case "FillInTheBlanks" -> {
                         FillInTheBlankQuestion fibq = new FillInTheBlankQuestion(questionText, correctAnswer);
                         addQuestion(fibq);
-                        break;
-                    default:
-                        throw new RuntimeException("Invalid question type: " + questionType);
+                    }
+                    default -> throw new RuntimeException("Invalid question type: " + questionType);
                 }
             }
         }
