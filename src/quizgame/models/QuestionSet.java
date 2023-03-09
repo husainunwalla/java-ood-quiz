@@ -1,4 +1,5 @@
 package quizgame.models;
+import quizgame.models.questions.FillInTheBlankQuestion;
 import quizgame.models.questions.MultipleChoiceQuestion;
 import quizgame.models.questions.Question;
 import java.io.BufferedReader;
@@ -39,6 +40,10 @@ public class QuestionSet {
                         int correctIndex = Integer.parseInt(correctAnswer);
                         MultipleChoiceQuestion mcq = new MultipleChoiceQuestion(questionText, answerChoices, correctIndex);
                         addQuestion(mcq);
+                        break;
+                    case "FillInTheBlanks":
+                        FillInTheBlankQuestion fibq = new FillInTheBlankQuestion(questionText, correctAnswer);
+                        addQuestion(fibq);
                         break;
                     default:
                         throw new RuntimeException("Invalid question type: " + questionType);

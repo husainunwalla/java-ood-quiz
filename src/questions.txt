@@ -2,3 +2,4 @@ MultipleChoice|What is the capital of France?|London|Paris|Berlin|Madrid|1
 MultipleChoice|What is the capital of Spain?|London|Paris|Berlin|Madrid|3
 MultipleChoice|What is the capital of UK?|London|Paris|Berlin|Madrid|0
 MultipleChoice|What is the capital of Germany?|London|Paris|Berlin|Madrid|2
+FillInTheBlanks|The capital of France is __________.|Paris

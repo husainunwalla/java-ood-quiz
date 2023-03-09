@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="inital commit">
+    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="Score board and other changes">
+      <change afterPath="$PROJECT_DIR$/src/quizgame/models/questions/FillInTheBlankQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/questions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/questions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/models/questions/MultipleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/questions/MultipleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/models/questions/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/questions/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +95,8 @@
       <updated>1678131336740</updated>
       <workItem from="1678131337641" duration="350000" />
       <workItem from="1678166644211" duration="4477000" />
-      <workItem from="1678212372283" duration="4739000" />
+      <workItem from="1678212372283" duration="7597000" />
+      <workItem from="1678403555786" duration="494000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1678131358983</created>
@@ -107,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678212410248</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Score board and other changes">
+      <created>1678233385112</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678233385112</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +138,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="inital commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="inital commit" />
+    <MESSAGE value="Score board and other changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Score board and other changes" />
   </component>
 </project>

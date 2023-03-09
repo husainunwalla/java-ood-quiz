@@ -17,6 +17,7 @@ public class QuizUI extends JFrame implements ActionListener {
     private JLabel questionLabel;
     private JButton nextButton;
     private int currentQuestionIndex;
+    private int selectedAnswerIndex;
     private int score;
     private JLabel scoreLabel;
 
@@ -65,47 +66,51 @@ public class QuizUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextButton) {
+            Question question = questionSet.getQuestions().get(currentQuestionIndex);
+            if (question instanceof MultipleChoiceQuestion) {
+                MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
+                int correctIndex = mcq.getCorrectAnswerIndex();
+                System.out.println(correctIndex);
+                if (selectedAnswerIndex == correctIndex) {
+                    score++;
+                }
+            }
+            scoreLabel.setText("Score: " + score);
             if (currentQuestionIndex < questionSet.getQuestions().size() - 1) {
                 currentQuestionIndex++;
                 loadQuestion(currentQuestionIndex);
-                scoreLabel.setText("Score: " + score);
             } else {
                 JOptionPane.showMessageDialog(this, "Quiz finished. Score: " + score);
                 dispose();
             }
         }else{
-            int selectedButtonIndex = answerButtons.indexOf(e.getSource());
-            Question question = questionSet.getQuestions().get(currentQuestionIndex);
-            if (question instanceof MultipleChoiceQuestion) {
-                MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
-                int correctIndex = mcq.getCorrectAnswerIndex();
-                if (selectedButtonIndex == correctIndex) {
-                    score++;
-                }
-            }
+            selectedAnswerIndex = answerButtons.indexOf(e.getSource());
         }
     }
 
     private void loadQuestion(int index) {
         Question question = questionSet.getQuestions().get(index);
         questionLabel.setText(question.getQuestionText());
-        List<String> answerChoices = question.getAnswerChoices();
-        for (int i = 0; i < answerButtons.size(); i++) {
-            JRadioButton button = answerButtons.get(i);
-            if (i < answerChoices.size()) {
-                button.setText(answerChoices.get(i));
-                button.setVisible(true);
-            } else {
-                button.setVisible(false);
-            }
-        }
         if (question instanceof MultipleChoiceQuestion) {
+            List<String> answerChoices = ((MultipleChoiceQuestion) question).getAnswerChoices();
+            ButtonGroup buttonGroup = new ButtonGroup();
+            for (int i = 0; i < answerButtons.size(); i++) {
+                JRadioButton button = answerButtons.get(i);
+                if (i < answerChoices.size()) {
+                    button.setText(answerChoices.get(i));
+                    button.setVisible(true);
+                    buttonGroup.add(button);
+                } else {
+                    button.setVisible(false);
+                }
+            }
             MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
             int correctIndex = mcq.getCorrectAnswerIndex();
             answerButtons.get(correctIndex).setActionCommand("correct");
         }
         clearSelection();
     }
+
 
     private void clearSelection() {
         for (JRadioButton button : answerButtons) {
