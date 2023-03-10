@@ -22,6 +22,10 @@ public class QuizUI extends JFrame implements ActionListener {
     private int score;
     private final JLabel scoreLabel;
     private final JTextField answerField;
+    private final JPanel contentPane;
+    private final JLabel titleLabel;
+    private boolean startGame;
+    private final JPanel namePanel;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -31,12 +35,43 @@ public class QuizUI extends JFrame implements ActionListener {
         this.nextButton = new JButton("Next");
         this.currentQuestionIndex = 0;
         this.score = 0;
+        this.answerField = new JTextField(20);
+        this.scoreLabel = new JLabel("Score: " + score);
+        this.contentPane = new JPanel(new BorderLayout());
+        this.startGame = false;
+        this.namePanel = new JPanel(new FlowLayout());
+        this.titleLabel = new JLabel("Welcome to the Quiz Game!");
+        this.selectedAnswerIndex = 0;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
 
-        JPanel contentPane = new JPanel(new BorderLayout());
+
         setContentPane(contentPane);
+
+        //Title Page and name box
+        JLabel nameLabel = new JLabel("Enter your name:");
+        JTextField nameField = new JTextField(10);
+        namePanel.add(nameLabel);
+        namePanel.add(nameField);
+
+
+
+        contentPane.add(titleLabel, BorderLayout.NORTH);
+        contentPane.add(namePanel);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(nextButton);
+        buttonPanel.add(scoreLabel);
+        contentPane.add(buttonPanel, BorderLayout.PAGE_END);
+
+
+        nextButton.addActionListener(this);
+    }
+
+    private void loadGame(){
+        contentPane.remove(namePanel);
+        contentPane.remove(titleLabel);
 
         JPanel questionPanel = new JPanel(new BorderLayout());
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -47,7 +82,7 @@ public class QuizUI extends JFrame implements ActionListener {
         answerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         contentPane.add(answerPanel, BorderLayout.CENTER);
 
-        answerField = new JTextField(20);
+
         answerPanel.add(answerField);
 
         for (int i = 0; i < 4; i++) {
@@ -57,20 +92,17 @@ public class QuizUI extends JFrame implements ActionListener {
             button.addActionListener(this);
         }
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(nextButton);
-        scoreLabel = new JLabel("Score: " + score);
-        buttonPanel.add(scoreLabel);
-        contentPane.add(buttonPanel, BorderLayout.PAGE_END);
-
-
-        nextButton.addActionListener(this);
         loadQuestion(currentQuestionIndex);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextButton) {
+            if(!this.startGame){
+                loadGame();
+                this.startGame = true;
+                return;
+            }
             clearSelection();
             Question question = questionSet.getQuestions().get(currentQuestionIndex);
             checkAnswer(question);
