@@ -2,6 +2,7 @@ package quizgame.ui;
 
 import quizgame.models.QuestionSet;
 import quizgame.models.questions.FillInTheBlankQuestion;
+import quizgame.models.questions.IdentifyPictureQuestion;
 import quizgame.models.questions.MultipleChoiceQuestion;
 import quizgame.models.questions.Question;
 
@@ -26,6 +27,8 @@ public class QuizUI extends JFrame implements ActionListener {
     private final JLabel titleLabel;
     private boolean startGame;
     private final JPanel namePanel;
+    private Image image;
+    private  JLabel imageLabel;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -42,6 +45,8 @@ public class QuizUI extends JFrame implements ActionListener {
         this.namePanel = new JPanel(new FlowLayout());
         this.titleLabel = new JLabel("Welcome to the Quiz Game!");
         this.selectedAnswerIndex = 0;
+        this.image = null;
+        this.imageLabel = null;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
@@ -77,6 +82,13 @@ public class QuizUI extends JFrame implements ActionListener {
         questionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         questionPanel.add(questionLabel, BorderLayout.NORTH);
         contentPane.add(questionPanel, BorderLayout.NORTH);
+
+        Image img = new ImageIcon("https://cdn.britannica.com/73/114973-050-2DC46083/Midtown-Manhattan-Empire-State-Building-New-York.jpg").getImage();
+
+        // Create label with image icon
+        JLabel label = new JLabel(new ImageIcon(img));
+        contentPane.add(label, BorderLayout.CENTER);
+
 
         JPanel answerPanel = new JPanel(new FlowLayout());
         answerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -144,6 +156,24 @@ public class QuizUI extends JFrame implements ActionListener {
             for (JRadioButton button : answerButtons) {
                 button.setVisible(false);
             }
+        }
+        if (question instanceof IdentifyPictureQuestion ipq) {
+            answerField.setVisible(false);
+            List<String> answerChoices = ((MultipleChoiceQuestion) question).getAnswerChoices();
+            ButtonGroup buttonGroup = new ButtonGroup();
+            for (int i = 0; i < answerButtons.size(); i++) {
+                JRadioButton button = answerButtons.get(i);
+                if (i < answerChoices.size()) {
+                    button.setText(answerChoices.get(i));
+                    button.setVisible(true);
+                    buttonGroup.add(button);
+                } else {
+                    button.setVisible(false);
+                }
+            }
+            int correctIndex = ipq.getCorrectAnswerIndex();
+            answerButtons.get(correctIndex).setActionCommand("correct");
+
         }
         clearSelection();
     }
