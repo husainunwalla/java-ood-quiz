@@ -6,10 +6,13 @@ import quizgame.models.questions.IdentifyPictureQuestion;
 import quizgame.models.questions.MultipleChoiceQuestion;
 import quizgame.models.questions.Question;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +30,7 @@ public class QuizUI extends JFrame implements ActionListener {
     private final JLabel titleLabel;
     private boolean startGame;
     private final JPanel namePanel;
-    private Image image;
-    private  JLabel imageLabel;
+    private JLabel imageLabel;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -45,8 +47,7 @@ public class QuizUI extends JFrame implements ActionListener {
         this.namePanel = new JPanel(new FlowLayout());
         this.titleLabel = new JLabel("Welcome to the Quiz Game!");
         this.selectedAnswerIndex = 0;
-        this.image = null;
-        this.imageLabel = null;
+        this.imageLabel = new JLabel();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
@@ -83,17 +84,9 @@ public class QuizUI extends JFrame implements ActionListener {
         questionPanel.add(questionLabel, BorderLayout.NORTH);
         contentPane.add(questionPanel, BorderLayout.NORTH);
 
-        Image img = new ImageIcon("https://cdn.britannica.com/73/114973-050-2DC46083/Midtown-Manhattan-Empire-State-Building-New-York.jpg").getImage();
-
-        // Create label with image icon
-        JLabel label = new JLabel(new ImageIcon(img));
-        contentPane.add(label, BorderLayout.CENTER);
-
-
         JPanel answerPanel = new JPanel(new FlowLayout());
         answerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         contentPane.add(answerPanel, BorderLayout.CENTER);
-
 
         answerPanel.add(answerField);
 
@@ -159,20 +152,17 @@ public class QuizUI extends JFrame implements ActionListener {
         }
         if (question instanceof IdentifyPictureQuestion ipq) {
             answerField.setVisible(false);
-            List<String> answerChoices = ((MultipleChoiceQuestion) question).getAnswerChoices();
-            ButtonGroup buttonGroup = new ButtonGroup();
-            for (int i = 0; i < answerButtons.size(); i++) {
-                JRadioButton button = answerButtons.get(i);
-                if (i < answerChoices.size()) {
-                    button.setText(answerChoices.get(i));
-                    button.setVisible(true);
-                    buttonGroup.add(button);
-                } else {
-                    button.setVisible(false);
-                }
+            try {
+                URL imageUrl = new URL(ipq.getPictureUrl());
+                Image image = ImageIO.read(imageUrl);
+                ImageIcon imageIcon = new ImageIcon(image);
+                imageLabel.setIcon(imageIcon);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            int correctIndex = ipq.getCorrectAnswerIndex();
-            answerButtons.get(correctIndex).setActionCommand("correct");
+
+            // Add the image label to the content pane
+            contentPane.add(imageLabel, BorderLayout.EAST);
 
         }
         clearSelection();
@@ -186,6 +176,9 @@ public class QuizUI extends JFrame implements ActionListener {
     }
 
     private void checkAnswer(Question question){
+        if (question instanceof IdentifyPictureQuestion ipq){
+            this.contentPane.remove(this.imageLabel);
+        }
         if (question instanceof MultipleChoiceQuestion mcq) {
             int correctIndex = mcq.getCorrectAnswerIndex();
             if (selectedAnswerIndex == correctIndex) score++;
