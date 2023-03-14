@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionSet {
@@ -23,6 +24,10 @@ public class QuestionSet {
 
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    public void shuffleQuestions() {
+        Collections.shuffle(questions);
     }
 
     public void loadQuestionsFromFile(String filename) throws IOException {
