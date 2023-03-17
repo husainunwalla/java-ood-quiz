@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="feat: added working picture for picture type question">
+    <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="feat: added ability to shiffle questions">
+      <change afterPath="$PROJECT_DIR$/src/scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +93,8 @@
       <workItem from="1678166644211" duration="4477000" />
       <workItem from="1678212372283" duration="7597000" />
       <workItem from="1678403555786" duration="494000" />
-      <workItem from="1678834831374" duration="1758000" />
+      <workItem from="1678834831374" duration="3868000" />
+      <workItem from="1678898590167" duration="1738000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1678131358983</created>
@@ -151,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678836494905</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: added ability to shiffle questions">
+      <created>1678836642865</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678836642865</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +183,7 @@
     <MESSAGE value="feat: resolved warnings" />
     <MESSAGE value="feat: added title page" />
     <MESSAGE value="feat: added working picture for picture type question" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added working picture for picture type question" />
+    <MESSAGE value="feat: added ability to shiffle questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added ability to shiffle questions" />
   </component>
 </project>

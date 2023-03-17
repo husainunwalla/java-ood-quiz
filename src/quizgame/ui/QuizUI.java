@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +31,11 @@ public class QuizUI extends JFrame implements ActionListener {
     private final JTextField answerField;
     private final JPanel contentPane;
     private final JLabel titleLabel;
+    private final JTextField nameField;
     private boolean startGame;
     private final JPanel namePanel;
-    private JLabel imageLabel;
+    private final JLabel imageLabel;
+    private String userName;
 
     public QuizUI(QuestionSet questionSet) {
         super("Quiz Game");
@@ -46,8 +51,10 @@ public class QuizUI extends JFrame implements ActionListener {
         this.startGame = false;
         this.namePanel = new JPanel(new FlowLayout());
         this.titleLabel = new JLabel("Welcome to the Quiz Game!");
+        this.nameField = new JTextField(10);
         this.selectedAnswerIndex = 0;
         this.imageLabel = new JLabel();
+        this.userName = "Name not entered";
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
@@ -57,12 +64,12 @@ public class QuizUI extends JFrame implements ActionListener {
 
         //Title Page and name box
         JLabel nameLabel = new JLabel("Enter your name:");
-        JTextField nameField = new JTextField(10);
+
         namePanel.add(nameLabel);
         namePanel.add(nameField);
 
 
-
+        titleLabel.setFont(new Font("Serif", Font.PLAIN, 40));
         contentPane.add(titleLabel, BorderLayout.NORTH);
         contentPane.add(namePanel);
 
@@ -106,17 +113,25 @@ public class QuizUI extends JFrame implements ActionListener {
             if(!this.startGame){
                 loadGame();
                 this.startGame = true;
+                this.userName = this.nameField.getText();
                 return;
             }
             clearSelection();
             Question question = questionSet.getQuestions().get(currentQuestionIndex);
             checkAnswer(question);
-            scoreLabel.setText("Score: " + score);
+            scoreLabel.setText("Score: " + score + " out of " + (currentQuestionIndex + 1));
             if (currentQuestionIndex < questionSet.getQuestions().size() - 1) {
                 currentQuestionIndex++;
                 loadQuestion(currentQuestionIndex);
             } else {
-                JOptionPane.showMessageDialog(this, "Quiz finished. Score: " + score);
+                JOptionPane.showMessageDialog(this, "Quiz finished. \nScore: " + score + " out of " + questionSet.getQuestions().size());
+                final String scoreFileEntry = "\n" + this.userName + "\t" + this.score + " / " + questionSet.getQuestions().size();
+                try {
+                    Files.write(Paths.get("src/scores.txt"), scoreFileEntry.getBytes(), StandardOpenOption.APPEND);
+                }catch (IOException error) {
+                    //exception handling left as an exercise for the reader
+                    System.out.println("Could not write score to File " + error);
+                }
                 dispose();
             }
         }else{
@@ -176,7 +191,7 @@ public class QuizUI extends JFrame implements ActionListener {
     }
 
     private void checkAnswer(Question question){
-        if (question instanceof IdentifyPictureQuestion ipq){
+        if (question instanceof IdentifyPictureQuestion){
             this.contentPane.remove(this.imageLabel);
         }
         if (question instanceof MultipleChoiceQuestion mcq) {
