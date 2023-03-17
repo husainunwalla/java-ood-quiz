@@ -3,4 +3,4 @@ MultipleChoice|What is the capital of Spain?|London|Paris|Berlin|Madrid|3
 MultipleChoice|What is the capital of UK?|London|Paris|Berlin|Madrid|0
 MultipleChoice|What is the capital of Germany?|London|Paris|Berlin|Madrid|2
 FillInTheBlanks|The capital of France is __________.|Paris
-IdentifyPicture|What is the name of this famous landmark?|https://cdn.britannica.com/73/114973-050-2DC46083/Midtown-Manhattan-Empire-State-Building-New-York.jpg|Empire State Building|Eiffel Tower|Burj Khalifa|Big Ben|0
+IdentifyPicture|What is the name of this famous landmark?|https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg?20160430220804|Empire State Building|Eiffel Tower|Burj Khalifa|Big Ben|0
