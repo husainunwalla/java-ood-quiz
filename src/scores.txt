@@ -1,3 +1,6 @@
-
-Husain	6 / 6
-Husain	6 / 6
+John,6
+Mary,3
+Samantha,5
+Jack,2
+Tom,1
+Husain,6

@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -18,6 +20,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class QuizUI extends JFrame implements ActionListener {
     private final QuestionSet questionSet;
@@ -125,13 +132,42 @@ public class QuizUI extends JFrame implements ActionListener {
                 loadQuestion(currentQuestionIndex);
             } else {
                 JOptionPane.showMessageDialog(this, "Quiz finished. \nScore: " + score + " out of " + questionSet.getQuestions().size());
-                final String scoreFileEntry = "\n" + this.userName + "\t" + this.score + " / " + questionSet.getQuestions().size();
+                final String scoreFileEntry = "\n" + this.userName + "," + this.score;
                 try {
                     Files.write(Paths.get("src/scores.txt"), scoreFileEntry.getBytes(), StandardOpenOption.APPEND);
                 }catch (IOException error) {
                     //exception handling left as an exercise for the reader
                     System.out.println("Could not write score to File " + error);
                 }
+                // Read scores from file
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                try (BufferedReader br = new BufferedReader(new FileReader("src/scores.txt"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                        String[] parts = line.split(",");
+                        dataset.addValue(Integer.parseInt(parts[1]), "Score", parts[0]);
+                    }
+                } catch (IOException ScoreError) {
+                    ScoreError.printStackTrace();
+                }
+
+                // Create chart
+                JFreeChart chart = ChartFactory.createBarChart(
+                        "Scores",          // chart title
+                        "Player",          // x axis label
+                        "Score",           // y axis label
+                        dataset,           // data
+                        PlotOrientation.VERTICAL,
+                        true,              // legend
+                        true,              // tooltips
+                        false              // urls
+                );
+
+                // Display chart
+                ChartFrame frame = new ChartFrame("Scores", chart);
+                frame.pack();
+                frame.setVisible(true);
                 dispose();
             }
         }else{
