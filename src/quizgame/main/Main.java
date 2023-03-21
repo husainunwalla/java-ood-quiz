@@ -3,6 +3,9 @@ import javax.swing.*;
 import quizgame.models.QuestionSet;
 import quizgame.ui.QuizUI;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         // Load the question set from a file

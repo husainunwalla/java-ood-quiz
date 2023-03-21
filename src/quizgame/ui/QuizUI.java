@@ -11,9 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -116,6 +114,8 @@ public class QuizUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String filePath = "scores.txt"; // Specify the file path
+        File file = new File(filePath);
         if (e.getSource() == nextButton) {
             if(!this.startGame){
                 loadGame();
@@ -132,16 +132,19 @@ public class QuizUI extends JFrame implements ActionListener {
                 loadQuestion(currentQuestionIndex);
             } else {
                 JOptionPane.showMessageDialog(this, "Quiz finished. \nScore: " + score + " out of " + questionSet.getQuestions().size());
-                final String scoreFileEntry = "\n" + this.userName + "," + this.score;
+                final String scoreFileEntry = this.userName + "," + this.score + "\n";
                 try {
-                    Files.write(Paths.get("src/scores.txt"), scoreFileEntry.getBytes(), StandardOpenOption.APPEND);
+                    FileWriter writer = new FileWriter(file, true); // Use FileWriter to append to file
+                    writer.write(scoreFileEntry);
+                    writer.close();
+                    System.out.println("Content appended to file successfully");
                 }catch (IOException error) {
                     //exception handling left as an exercise for the reader
                     System.out.println("Could not write score to File " + error);
                 }
                 // Read scores from file
                 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-                try (BufferedReader br = new BufferedReader(new FileReader("src/scores.txt"))) {
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                     String line;
                     while ((line = br.readLine()) != null) {
                         System.out.println(line);
