@@ -8,7 +8,7 @@ public class Main {
         // Load the question set from a file
         QuestionSet questionSet = new QuestionSet();
         try {
-            questionSet.loadQuestionsFromFile("src/questions.txt");
+            questionSet.loadQuestionsFromFile("res/questions.txt");
             questionSet.shuffleQuestions();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error loading question set: " + e.getMessage());

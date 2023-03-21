@@ -1,0 +1,19 @@
+MultipleChoice|What is the capital of France?|London|Paris|Berlin|Madrid|1
+MultipleChoice|What is the capital of Spain?|London|Paris|Berlin|Madrid|3
+MultipleChoice|What is the capital of UK?|London|Paris|Berlin|Madrid|0
+MultipleChoice|What is the capital of Germany?|London|Paris|Berlin|Madrid|2
+MultipleChoice|What is the capital of Italy?|Rome|Athens|Dublin|Brussels|0
+MultipleChoice|What is the currency of Japan?|Yen|Won|Dollar|Euro|0
+MultipleChoice|What is the largest ocean in the world?|Pacific|Atlantic|Indian|Arctic|0
+MultipleChoice|Who is the current president of the United States?|Joe Biden|Donald Trump|Barack Obama|George W. Bush|0
+MultipleChoice|What is the smallest continent in the world?|Australia|South America|Europe|Antarctica|3
+FillInTheBlanks|The capital of France is __________.|Paris
+FillInTheBlanks|The capital of Canada is __________.|Ottawa
+FillInTheBlanks|The currency of Germany is __________.|Euro
+FillInTheBlanks|The largest country in the world by land area is __________.|Russia
+FillInTheBlanks|The tallest mountain in the world is __________.|Mount Everest
+FillInTheBlanks|The largest desert in the world is __________.|Sahara
+IdentifyPicture|What is the name of this famous landmark?|https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg?20160430220804|Empire State Building|Eiffel Tower|Burj Khalifa|Big Ben|0
+IdentifyPicture|What is the name of this famous landmark?|https://cdn.britannica.com/86/170586-050-AB7FEFAE/Taj-Mahal-Agra-India.jpg?w=300|Great Wall of China|Taj Mahal|Chichen Itza|Machu Picchu|1
+IdentifyPicture|What is the name of this famous landmark?|https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg/440px-Christ_the_Redeemer_-_Cristo_Redentor.jpg|Christ the Redeemer|Rio de Janeiro Cathedral|Sugarloaf Mountain|Copacabana Beach|0
+IdentifyPicture|What is the name of this famous soccer player?|https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/440px-Cristiano_Ronaldo_2018.jpg|Lionel Messi|Kylian Mbappe|Neymar Jr|Cristiano Ronaldo|3

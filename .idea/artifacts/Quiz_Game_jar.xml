@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Quiz Game:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Quiz_Game_jar</output-path>
+    <root id="archive" name="Quiz Game.jar">
+      <element id="module-output" name="Quiz Game" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jfreechart-1.0.19/lib/jcommon-1.0.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>

@@ -1,6 +1,3 @@
-John,6
-Mary,3
-Samantha,5
-Jack,2
+Samantha,3
 Tom,1
-Husain,6
+Husain,3

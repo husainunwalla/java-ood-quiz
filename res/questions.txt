@@ -1,0 +1,3 @@
+MultipleChoice|What is the capital of Spain?|London|Paris|Berlin|Madrid|3
+FillInTheBlanks|The capital of France is __________.|Paris
+IdentifyPicture|What is the name of this famous landmark?|https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg?20160430220804|Empire State Building|Eiffel Tower|Burj Khalifa|Big Ben|0
