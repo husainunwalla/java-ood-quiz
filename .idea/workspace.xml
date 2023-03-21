@@ -10,15 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a98d831c-30b1-43bf-ad81-f26f61a76e88" name="Changes" comment="fix: added Graph visualization">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Quiz_Game_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/questions_full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quiz Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz Game.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/questions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quizgame/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/scores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/models/QuestionSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quizgame/ui/QuizUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scores.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,7 @@
       <workItem from="1679267253444" duration="2691000" />
       <workItem from="1679352791857" duration="2090000" />
       <workItem from="1679356831860" duration="8000" />
-      <workItem from="1679368851842" duration="3418000" />
+      <workItem from="1679368851842" duration="3695000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1678131358983</created>
@@ -209,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679267675156</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix: added Graph visualization">
+      <created>1679372299150</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1679372299150</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

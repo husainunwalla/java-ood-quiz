@@ -3,9 +3,8 @@ import quizgame.models.questions.FillInTheBlankQuestion;
 import quizgame.models.questions.IdentifyPictureQuestion;
 import quizgame.models.questions.MultipleChoiceQuestion;
 import quizgame.models.questions.Question;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,7 +30,8 @@ public class QuestionSet {
     }
 
     public void loadQuestionsFromFile(String filename) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        try (InputStream in = getClass().getResourceAsStream("/questions.txt");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
